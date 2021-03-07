@@ -1,0 +1,164 @@
+<ion-content>
+  <div class="title">
+    <h1 *ngIf="!oldRestaurant">
+      New <br />
+      <span>Restaurant!</span>
+    </h1>
+    <h1 *ngIf="oldRestaurant">
+      Edit <br />
+      <span>Restaurant!</span>
+    </h1>
+  </div>
+
+  <ion-grid class="inputs">
+    <ion-row>
+      <!-- Name -->
+      <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="12" size-xs="12">
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input [(ngModel)]="restaurant.name" [disabled]="restaurantId || oldRestaurant"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <!-- Address -->
+      <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="6" size-xs="12">
+        <ion-item>
+          <ion-label position="floating">Street</ion-label>
+          <ion-input [(ngModel)]="restaurant.address" [disabled]="restaurantId || oldRestaurant"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <!-- City -->
+      <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="6" size-xs="12">
+        <ion-item>
+          <ion-label position="floating">City</ion-label>
+          <ion-input [(ngModel)]="restaurant.city" [disabled]="restaurantId || oldRestaurant"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <!-- Description -->
+      <ion-col size-xl="12" size-lg="12" size-md="12" size-sm="12" size-xs="12">
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea [(ngModel)]="restaurant.description" [disabled]="restaurantId || oldRestaurant"></ion-textarea>
+        </ion-item>
+      </ion-col>
+
+      <!-- Cuisine select -->
+      <ion-col size-md="5" size-sm="5" size-xs="5">
+          <ion-item>
+            <ion-label>Cuisine</ion-label>
+            <ion-select [(ngModel)]="restaurant.cuisine" [disabled]="restaurantId || oldRestaurant">
+              <ion-select-option value="north-indian">North-Indian</ion-select-option>
+              <ion-select-option value="south-indian">South-Indian</ion-select-option>
+              <ion-select-option value="chinese">Chinese</ion-select-option>
+              <ion-select-option value="arabian">Arabian</ion-select-option>
+            </ion-select>
+          </ion-item>
+      </ion-col>
+
+      <!-- Type select -->
+      <ion-col size-md="5" size-sm="5" size-xs="5">
+          <ion-item>
+            <ion-label>Type</ion-label>
+            <ion-select [(ngModel)]="restaurant.restaurantType" [disabled]="restaurantId || oldRestaurant">
+              <ion-select-option value="veg">Veg</ion-select-option>
+              <ion-select-option value="non-veg">Non-veg</ion-select-option>
+            </ion-select>
+          </ion-item>
+      </ion-col>
+
+      <!-- Add Button -->
+      <ion-col size-md="2" size-sm="2" size-xs="2">
+        <ion-button class="add-dish" (click)="addRestaurant()" [disabled]="restaurantId || oldRestaurant">
+          <ion-icon slot="icon-only" name="checkmark-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="restaurantId">
+    <ion-row>
+      <ion-col size="12">
+        <h2>Food Items</h2>
+      </ion-col>
+
+      <!-- Item Name -->
+      <ion-col size-md="10" size-sm="10" size-xs="12">
+        <ion-item>
+          <ion-input id="itemName" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-input>
+        </ion-item>
+        <div *ngIf="filters.length != 0" class="filterlist">
+          <ion-item *ngFor="let filter of filters" class="filterData" (click)="filterSelect(filter)">
+            <p>{{filter.name}}</p>
+          </ion-item>
+        </div>
+      </ion-col>
+
+      <!-- Item Cost -->
+      <ion-col size-md="2" size-sm="2" size-xs="6">
+        <ion-item>
+          <ion-input placeholder="Cost" [(ngModel)]="dish.cost"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <!-- Cuisine -->
+      <ion-col size-md="5" size-sm="5" size-xs="6">
+        <!-- <ion-item>
+          <ion-input placeholder="Cuisine" [(ngModel)]="dish.cuisine"></ion-input>
+        </ion-item> -->
+        <ion-item>
+          <ion-label>Cuisine</ion-label>
+          <ion-select [(ngModel)]="dish.cuisine">
+            <ion-select-option value="north-indian">North-Indian</ion-select-option>
+            <ion-select-option value="south-indian">South-Indian</ion-select-option>
+            <ion-select-option value="chinese">Chinese</ion-select-option>
+            <ion-select-option value="arabian">Arabian</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+      <!-- Item Type -->
+      <ion-col size-md="5" size-sm="5" size-xs="8">
+        <ion-item>
+          <ion-label>Type</ion-label>
+          <ion-select [(ngModel)]="dish.type">
+            <ion-select-option value="veg">Veg</ion-select-option>
+            <ion-select-option value="non-veg">Non-veg</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+      <!-- Add Button -->
+      <ion-col size-md="2" size-sm="2" size-xs="4">
+        <ion-button class="add-dish" (click)="addDish()">
+          <ion-icon slot="icon-only" name="checkmark-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+      <!-- Description -->
+      <ion-col size-xl="12" size-lg="12" size-md="12" size-sm="12" size-xs="12">
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea [disabled]="clickedData" [(ngModel)]="dish.description"></ion-textarea>
+        </ion-item>
+      </ion-col>
+
+      <!-- Food Items -->
+      <ion-col size="12">
+        <ion-list>
+          <!-- Restaurant Item -->
+          <ion-item button *ngFor="let dish of extractedDishes">
+            <div>
+              <h4>{{dish.name}}</h4>
+              <p>{{dish.description}}</p>
+            </div>
+            <div slot="end">
+              <h1>{{dish.cost}}</h1>
+            </div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-content>

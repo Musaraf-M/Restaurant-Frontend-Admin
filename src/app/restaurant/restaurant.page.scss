@@ -1,0 +1,25 @@
+$padding: 0px 20px;
+ion-content {
+  .title {
+    padding-top: 10px;
+    padding: $padding;
+    h1 {
+      line-height: 1.5em;
+      font-weight: 200;
+      span {
+        font-weight: 500;
+      }
+    }
+  }
+  .filterlist{
+    max-height: 20em;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+  ion-button.add-dish {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+}
+
