@@ -14,7 +14,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class ApiService {
   private localIp = 'http://localhost:8010';
-  private productionIp = 'https://xenodochial-gates-a3deed.netlify.app/';
+  private productionIp = 'https://xenodochial-gates-a3deed.netlify.app';
   private currentIp: string = this.productionIp;
   constructor(
     private http: HttpClient,
