@@ -1,0 +1,35 @@
+// set color to wrong message
+.error-message {
+  color: var(--ion-color-danger);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+
+  .heading-1 {
+    margin-bottom: 50px;
+    font-size: 36px;
+  }
+
+  .list-wrapper {
+    max-width: 400px;
+    width: 100%;
+    ion-list {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      height: 200px;
+      width: 100%;
+      border-radius: 12px;
+      padding: 20px;
+      
+      ion-button {
+        margin-top: 20px;
+      }
+    }
+  }
+}
