@@ -1,0 +1,51 @@
+$padding: 0px 20px;
+ion-content {
+  .title {
+    padding-top: 10px;
+    padding: $padding;
+    h1 {
+      line-height: 1.5em;
+      font-weight: 200;
+      span {
+        font-weight: 500;
+      }
+    }
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  #content {
+    margin-top: 20px;
+    padding: $padding;
+    margin-bottom: 20px;
+    .heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .restaurants {
+      margin-top: 20px;
+      ion-list {
+        ion-item {
+          div {
+            h4{
+              &::first-letter{
+                text-transform: capitalize;
+              }
+            }
+            p {
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+              &::first-letter{
+                text-transform: capitalize;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

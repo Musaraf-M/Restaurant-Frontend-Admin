@@ -1,0 +1,35 @@
+<ion-content padding>
+  <div class="title">
+    <h1>
+      Welcome <br />
+      <span>Mangoleap!</span>
+    </h1>
+    <!-- log out -->
+    <ion-button (click)="logout()">
+      <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div id="content">
+    <!-- Title Bar -->
+    <div class="heading">
+      <h2>Restaurants</h2>
+      <ion-button (click)="presentAlertPrompt()">
+        <ion-icon slot="start" name="add"></ion-icon>
+        <ion-label>Add Restaurant</ion-label>
+      </ion-button>
+    </div>
+
+    <div class="restaurants">
+      <ion-list>
+        <!-- Restaurant Item -->
+        <ion-item button *ngFor="let restaurant of restaurants">
+          <div (click)="restaurantClicked(restaurant)">
+            <h4>{{restaurant.name}}</h4>
+            <p>{{restaurant.description}}</p>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
