@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
 import { Restaurant } from '../models/restaurant.model';
@@ -16,18 +16,25 @@ export class HomePage implements OnInit {
     private alertController: AlertController,
     private api: ApiService,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private toastController: ToastController
   ) {}
 
   ngOnInit(): void {
     this.api.getRestaurant().subscribe((data) => {
       this.restaurants = data;
     });
+    
   }
 
   // Add restaurant navigation
-  presentAlertPrompt(): void {
+  async presentAlertPrompt(): Promise<void> {
     this.router.navigate(['restaurant']);
+    const toast = await this.toastController.create({
+      message: 'Your settings have been saved.',
+      duration: 2000
+    });
+    toast.present();
   }
 
   // Navigate to restaurant page
@@ -40,8 +47,8 @@ export class HomePage implements OnInit {
 
   // Log user out
   logout(): void {
-    this.auth.removeToken();
-    this.router.navigate(['login']);
+    //this.auth.removeToken();
+    this.router.navigate(['']);
   }
 
   // referesh the page

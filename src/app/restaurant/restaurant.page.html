@@ -36,8 +36,12 @@
       <!-- City -->
       <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="6" size-xs="12">
         <ion-item>
-          <ion-label position="floating">City</ion-label>
-          <ion-input [(ngModel)]="restaurant.city" [disabled]="restaurantId || oldRestaurant"></ion-input>
+          <ion-label>City</ion-label>
+            <ion-select [(ngModel)]="restaurant.city" [disabled]="restaurantId || oldRestaurant">
+              <ion-select-option value="chennai">Chennai</ion-select-option>
+              <ion-select-option value="madurai">Madurai</ion-select-option>
+              <ion-select-option value="coimbatore">Coimbatore</ion-select-option>
+            </ion-select>
         </ion-item>
       </ion-col>
 
@@ -123,6 +127,14 @@
         </ion-item>
       </ion-col>
 
+      <!-- Description -->
+      <ion-col size-xl="12" size-lg="12" size-md="12" size-sm="12" size-xs="12">
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea [disabled]="clickedData" [(ngModel)]="dish.description"></ion-textarea>
+        </ion-item>
+      </ion-col>
+
       <!-- Item Type -->
       <ion-col size-md="5" size-sm="5" size-xs="8">
         <ion-item>
@@ -139,14 +151,6 @@
         <ion-button class="add-dish" (click)="addDish()">
           <ion-icon slot="icon-only" name="checkmark-outline"></ion-icon>
         </ion-button>
-      </ion-col>
-
-      <!-- Description -->
-      <ion-col size-xl="12" size-lg="12" size-md="12" size-sm="12" size-xs="12">
-        <ion-item>
-          <ion-label position="floating">Description</ion-label>
-          <ion-textarea [disabled]="clickedData" [(ngModel)]="dish.description"></ion-textarea>
-        </ion-item>
       </ion-col>
 
       <!-- Food Items -->

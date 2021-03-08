@@ -10,6 +10,7 @@ import { AuthService } from '../services/auth.service';
 import { Dish } from '../models/dish.model';
 import { ExtractDish } from '../models/dish.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-restaurant',
@@ -52,7 +53,8 @@ export class RestaurantPage implements OnInit {
     private api: ApiService,
     private auth: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastController: ToastController
   ) {
     // Get Route Params
     this.route.queryParams.subscribe((params) => {
@@ -105,11 +107,15 @@ export class RestaurantPage implements OnInit {
 
   // Add restaurant
   addRestaurant(): void {
-    this.api.setRestaurant(this.restaurant).subscribe((data) => {
+    this.api.setRestaurant(this.restaurant).subscribe(async (data) => {
       if (data) {
         this.restaurantId = data.restaurantId;
       }
-      console.log(data);
+      const toast = await this.toastController.create({
+        message: 'Restaurant added',
+        duration: 2000
+      });
+      toast.present();
     });
   }
 
@@ -138,7 +144,7 @@ export class RestaurantPage implements OnInit {
   addDish(): void {
     this.dish.name = this.searchTerm;
     this.dish.restaurantId = this.restaurantId;
-    this.api.setDish(this.dish).subscribe((data) => {
+    this.api.setDish(this.dish).subscribe(async (data) => {
       if (data) {
         let extractedDish;
         if (data.dish) {
@@ -159,7 +165,11 @@ export class RestaurantPage implements OnInit {
         };
         this.searchTerm = '';
       }
-      //console.log(data);
+      const toast = await this.toastController.create({
+        message: 'Dish added',
+        duration: 2000
+      });
+      toast.present();
     });
   }
 

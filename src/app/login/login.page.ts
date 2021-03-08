@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
     ],
     password: [
       { type: 'required', message: 'Password is required' },
-      { type: 'pattern', message: 'Password doesn\'t match requirement' },
+      { type: 'pattern', message: 'Password doesn\'t match' },
     ],
   };
 
