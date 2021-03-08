@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
     ],
     password: [
       { type: 'required', message: 'Password is required' },
-      { type: 'pattern', message: 'Password must have minimum 6 characters,one upper and one lower charcter with a special symbol' },
+      { type: 'pattern', message: 'Password must have minimum 6 characters,one upper and one lower character with a special character' },
     ],
   };
 
