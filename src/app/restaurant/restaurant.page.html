@@ -21,15 +21,15 @@
       <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="12" size-xs="12">
         <ion-item>
           <ion-label position="floating">Name</ion-label>
-          <ion-input [(ngModel)]="restaurant.name" [disabled]="restaurantId || oldRestaurant"></ion-input>
+          <ion-input class="caps" [(ngModel)]="restaurant.name" [disabled]="restaurantId || oldRestaurant"></ion-input>
         </ion-item>
       </ion-col>
 
       <!-- Address -->
       <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="6" size-xs="12">
-        <ion-item>
+        <ion-item >
           <ion-label position="floating">Street</ion-label>
-          <ion-input [(ngModel)]="restaurant.address" [disabled]="restaurantId || oldRestaurant"></ion-input>
+          <ion-input class="caps" [(ngModel)]="restaurant.address" [disabled]="restaurantId || oldRestaurant"></ion-input>
         </ion-item>
       </ion-col>
 
@@ -49,7 +49,7 @@
       <ion-col size-xl="12" size-lg="12" size-md="12" size-sm="12" size-xs="12">
         <ion-item>
           <ion-label position="floating">Description</ion-label>
-          <ion-textarea [(ngModel)]="restaurant.description" [disabled]="restaurantId || oldRestaurant"></ion-textarea>
+          <ion-textarea class="caps" [(ngModel)]="restaurant.description" [disabled]="restaurantId || oldRestaurant"></ion-textarea>
         </ion-item>
       </ion-col>
 

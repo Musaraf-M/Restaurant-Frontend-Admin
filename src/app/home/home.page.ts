@@ -27,13 +27,8 @@ export class HomePage implements OnInit {
   }
 
   // Add restaurant navigation
-  async presentAlertPrompt(): Promise<void> {
+  presentAlertPrompt(): void {
     this.router.navigate(['restaurant']);
-    const toast = await this.toastController.create({
-      message: 'Your settings have been saved.',
-      duration: 2000
-    });
-    toast.present();
   }
 
   // Navigate to restaurant page
@@ -46,7 +41,7 @@ export class HomePage implements OnInit {
 
   // Log user out
   logout(): void {
-    //this.auth.removeToken();
+    this.auth.removeToken();
     this.router.navigate(['']);
   }
 
