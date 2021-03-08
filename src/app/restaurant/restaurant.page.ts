@@ -9,7 +9,7 @@ import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
 import { Dish } from '../models/dish.model';
 import { ExtractDish } from '../models/dish.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-restaurant',
@@ -51,7 +51,8 @@ export class RestaurantPage implements OnInit {
   constructor(
     private api: ApiService,
     private auth: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     // Get Route Params
     this.route.queryParams.subscribe((params) => {
@@ -179,5 +180,9 @@ export class RestaurantPage implements OnInit {
     });
 
     return tempObj;
+  }
+
+  navhome(){
+    this.router.navigate(['home']);
   }
 }

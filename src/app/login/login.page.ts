@@ -16,7 +16,10 @@ export class LoginPage implements OnInit {
       { type: 'required', message: 'Email is required' },
       { type: 'pattern', message: 'Please enter a valid email address' },
     ],
-    password: [{ type: 'required', message: 'Password is required' }],
+    password: [
+      { type: 'required', message: 'Password is required' },
+      { type: 'pattern', message: 'Password doesn\'t match requirement' },
+    ],
   };
 
   // Login validation
@@ -28,7 +31,13 @@ export class LoginPage implements OnInit {
         Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
       ],
     ],
-    password: ['', Validators.required],
+    password: [
+      '',
+      [
+         Validators.required,
+         Validators.pattern(/(?=^.{6,20}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/),
+      ]
+    ],
   });
   constructor(
     private formBuilder: FormBuilder,

@@ -10,8 +10,11 @@ ion-content {
         font-weight: 500;
       }
     }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  .filterlist{
+  .filterlist {
     max-height: 20em;
     overflow: scroll;
     overflow-x: hidden;
@@ -22,4 +25,3 @@ ion-content {
     margin: 0;
   }
 }
-

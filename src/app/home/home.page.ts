@@ -43,4 +43,10 @@ export class HomePage implements OnInit {
     this.auth.removeToken();
     this.router.navigate(['login']);
   }
+
+  // referesh the page
+  doRefresh(event): void {
+      this.ngOnInit();
+      event.target.complete();
+  }
 }
