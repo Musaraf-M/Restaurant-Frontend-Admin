@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AdminGuard } from '../guard/admin-guard.guard';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
 

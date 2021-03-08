@@ -4,7 +4,6 @@ import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
 import { Restaurant } from '../models/restaurant.model';
 import { Router } from '@angular/router';
-import { AdminGuard } from '../guard/admin-guard.guard';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +17,7 @@ export class HomePage implements OnInit {
     private api: ApiService,
     private auth: AuthService,
     private router: Router,
-    private toastController: ToastController,
+    private toastController: ToastController
   ) {}
 
   ngOnInit(): void {
