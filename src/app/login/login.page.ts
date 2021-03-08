@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AdminGuard } from '../guard/admin-guard.guard';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
 
@@ -43,10 +44,18 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private api: ApiService,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const data = this.auth.getTokendata();
+    if (data['role'] == 'admin') {
+      this.router.navigate(['home']);
+    } else {
+      this.router.navigate(['']);
+    }
+  }
 
   // Get user email
   get email(): AbstractControl {
