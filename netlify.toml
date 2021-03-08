@@ -1,0 +1,8 @@
+[build]
+  base = "/"
+  publish = "www/"
+  command = "ionic serve build"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -37,11 +37,11 @@
       <ion-col size-xl="4" size-lg="4" size-md="4" size-sm="6" size-xs="12">
         <ion-item>
           <ion-label>City</ion-label>
-            <ion-select [(ngModel)]="restaurant.city" [disabled]="restaurantId || oldRestaurant">
-              <ion-select-option value="chennai">Chennai</ion-select-option>
-              <ion-select-option value="madurai">Madurai</ion-select-option>
-              <ion-select-option value="coimbatore">Coimbatore</ion-select-option>
-            </ion-select>
+          <ion-select [(ngModel)]="restaurant.city" [disabled]="restaurantId || oldRestaurant">
+            <ion-select-option value="chennai">Chennai</ion-select-option>
+            <ion-select-option value="madurai">Madurai</ion-select-option>
+            <ion-select-option value="coimbatore">Coimbatore</ion-select-option>
+          </ion-select>
         </ion-item>
       </ion-col>
 
@@ -55,26 +55,26 @@
 
       <!-- Cuisine select -->
       <ion-col size-md="5" size-sm="5" size-xs="5">
-          <ion-item>
-            <ion-label>Cuisine</ion-label>
-            <ion-select [(ngModel)]="restaurant.cuisine" [disabled]="restaurantId || oldRestaurant">
-              <ion-select-option value="north-indian">North-Indian</ion-select-option>
-              <ion-select-option value="south-indian">South-Indian</ion-select-option>
-              <ion-select-option value="chinese">Chinese</ion-select-option>
-              <ion-select-option value="arabian">Arabian</ion-select-option>
-            </ion-select>
-          </ion-item>
+        <ion-item>
+          <ion-label>Cuisine</ion-label>
+          <ion-select [(ngModel)]="restaurant.cuisine" [disabled]="restaurantId || oldRestaurant">
+            <ion-select-option value="north-indian">North-Indian</ion-select-option>
+            <ion-select-option value="south-indian">South-Indian</ion-select-option>
+            <ion-select-option value="chinese">Chinese</ion-select-option>
+            <ion-select-option value="arabian">Arabian</ion-select-option>
+          </ion-select>
+        </ion-item>
       </ion-col>
 
       <!-- Type select -->
       <ion-col size-md="5" size-sm="5" size-xs="5">
-          <ion-item>
-            <ion-label>Type</ion-label>
-            <ion-select [(ngModel)]="restaurant.restaurantType" [disabled]="restaurantId || oldRestaurant">
-              <ion-select-option value="veg">Veg</ion-select-option>
-              <ion-select-option value="non-veg">Non-veg</ion-select-option>
-            </ion-select>
-          </ion-item>
+        <ion-item>
+          <ion-label>Type</ion-label>
+          <ion-select [(ngModel)]="restaurant.restaurantType" [disabled]="restaurantId || oldRestaurant">
+            <ion-select-option value="veg">Veg</ion-select-option>
+            <ion-select-option value="non-veg">Non-veg</ion-select-option>
+          </ion-select>
+        </ion-item>
       </ion-col>
 
       <!-- Add Button -->
@@ -104,6 +104,14 @@
         </div>
       </ion-col>
 
+      <!-- Description -->
+      <ion-col size-xl="12" size-lg="12" size-md="12" size-sm="12" size-xs="12">
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea [disabled]="clickedData" [(ngModel)]="dish.description"></ion-textarea>
+        </ion-item>
+      </ion-col>
+
       <!-- Item Cost -->
       <ion-col size-md="2" size-sm="2" size-xs="6">
         <ion-item>
@@ -124,14 +132,6 @@
             <ion-select-option value="chinese">Chinese</ion-select-option>
             <ion-select-option value="arabian">Arabian</ion-select-option>
           </ion-select>
-        </ion-item>
-      </ion-col>
-
-      <!-- Description -->
-      <ion-col size-xl="12" size-lg="12" size-md="12" size-sm="12" size-xs="12">
-        <ion-item>
-          <ion-label position="floating">Description</ion-label>
-          <ion-textarea [disabled]="clickedData" [(ngModel)]="dish.description"></ion-textarea>
         </ion-item>
       </ion-col>
 
@@ -170,4 +170,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  </ion-content>
+</ion-content>
