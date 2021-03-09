@@ -66,7 +66,7 @@ export class LoginPage implements OnInit {
   }
 
   // Login the user
-  submit(): void {
+  loginUser(): void {
     const cred = {
       email: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value,
