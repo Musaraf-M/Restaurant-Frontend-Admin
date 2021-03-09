@@ -31,8 +31,8 @@
     <div class="restaurants">
       <ion-list>
         <!-- Restaurant Item -->
-        <ion-item button *ngFor="let restaurant of restaurants">
-          <div (click)="restaurantClicked(restaurant)">
+        <ion-item button *ngFor="let restaurant of restaurants" (click)="restaurantClicked(restaurant)">
+          <div>
             <h4>{{restaurant.name}}</h4>
             <p>{{restaurant.description}}</p>
           </div>
